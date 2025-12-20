@@ -1,0 +1,174 @@
+/* =========================
+   OVERLAY
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: overlayFade 160ms ease;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+/* =========================
+   MODAL CONTAINER
+========================= */
+
+.modal {
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  padding: 18px;
+  width: 520px;
+  max-width: calc(100% - 40px);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(2,6,23,0.12);
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  overflow: hidden;
+  transform: translateY(-6px) scale(0.995);
+  animation: modalPop 220ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+@keyframes modalPop {
+  to { transform: translateY(0) scale(1) }
+}
+
+.modal h2 {
+  margin-bottom: 12px;
+  color: #0f172a;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+
+.modal label {
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+  margin-top: 10px;
+  color: #374151;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.431);
+  background: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(99,102,241,0.12);
+  border-color: rgba(99,102,241,0.6);
+}
+
+.modal textarea {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 40vh;
+  overflow: auto;
+}
+
+/* =========================
+   MODAL BODY
+========================= */
+
+.modal-body {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding-right: 6px;
+  margin-bottom: 6px;
+}
+
+.modal-body .desc {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #374151;
+}
+
+/* =========================
+   TAG SELECT (NEW)
+========================= */
+
+.tag-select {
+  position: relative; /* KEY FIX */
+}
+
+.tag-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.14);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 9999; /* OVER MODAL BODY */
+}
+
+.tag-option {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0f172a;
+}
+
+.tag-option:hover {
+  background: #f1f5f9;
+}
+
+.tag-option.new {
+  background: #eef2ff;
+  color: #2563eb;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.modal-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal button {
+  background: linear-gradient(90deg,#4f46e5,#06b6d4);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+}
+
+.modal .delete {
+  background: linear-gradient(90deg,#ff6b6b,#ff4d4f);
+}
+
+.close-btn,
+.modal .ghost {
+  background: transparent;
+  color: #374151;
+  border: 1px solid rgba(15,23,42,0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+}

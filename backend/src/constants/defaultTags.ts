@@ -1,0 +1,10 @@
+export const DEFAULT_TAGS = [
+  "BUSINESS",
+  "HOUSEWORK",
+  "HOLIDAY",
+  "MEETING",
+  "BIRTHDAY",
+  "FRIENDS",
+  "PROJECT",
+  "PERSONAL",
+];
