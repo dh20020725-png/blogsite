@@ -11,379 +11,188 @@
   color: #1f2937;
 }
 
-.header,
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin: auto;
+}
+
+/* Root footer */
 .footer {
+  position: relative;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin: auto;
+}
+
+.signbtn {
+  color: rgb(0, 0, 0);
+  border: none;
   padding: 10px 20px;
-  background: linear-gradient(
-    90deg,
-    rgb(80, 108, 146),
-    rgb(17, 93, 45)
-  );
-  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  transition: background-color 0.3s ease;
   text-align: center;
 }
 
-.footer {
-  position: relative;
-  width: 100%;
-  bottom: 0;
+.signbtn:hover {
+  color: #1575e2;
 }
 
-/* =======================
-   TOOLBAR
-======================= */
-
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.create-btn {
-  display: inline-flex;
-  height: fit-content;
-  gap: 8px;
-  padding: 10px 16px;
-  color: white;
+.logo {
+  text-align: center;
   cursor: pointer;
-  font-size: 17px;
-  border-radius: 10px;
-  font-weight: 600;
-  border: none;
-  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.12);
-  transition: transform 160ms ease;
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
-}
-
-.create-btn:hover {
-  transform: translateY(-3px) scale(1.01);
-}
-
-.create-btn:focus {
-  outline: 3px solid rgba(99, 102, 241, 0.16);
-  outline-offset: 3px;
 }
 
 /* =======================
-   VIEW SWITCH
+   SIGNUP MODAL (NEW)
 ======================= */
-.view-switch {
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.25s ease;
 }
 
-.view-switch button {
-  margin-left: 8px;
-  padding: 6px 12px;
+.modal-container {
+  background: #ffffff;
+  padding: 28px;
+  width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: scaleIn 0.25s ease;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.modal-container input {
+  padding: 10px 12px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+}
+
+.modal-container input:focus {
+  outline: none;
+  border-color: #1575e2;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
+  border: none;
+}
+
+.btn.confirm {
+  background: #1575e2;
+  color: white;
+}
+
+.btn.confirm:hover {
+  background: #0f5fc2;
+}
+
+.btn.cancel {
   background: #e5e7eb;
+}
+
+.btn.cancel:hover {
+  background: #d1d5db;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* =======================
+   AVATAR UPLOAD
+======================= */
+
+.avatar-upload {
   display: flex;
   justify-content: center;
+  cursor: pointer;
+}
+
+.avatar-preview {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f3f4f6;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  border: 2px dashed #cbd5e1;
+  transition: border-color 0.2s ease;
 }
 
-.view-switch .active {
-  background: #000;
-  color: #fff;
+.avatar-upload:hover .avatar-preview {
+  border-color: #1575e2;
 }
 
-/* =======================
-   PLANS CONTAINER
-======================= */
-
-.plans.grid {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-  transition: 1s;
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 FIXES SQUEEZING */
 }
 
-.plans.list {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* =======================
-   LIST HEADER (NEW)
-======================= */
-
-.list-header {
-  display: grid;
-  grid-template-columns: 2fr 1fr 4fr 2fr;
-  padding: 12px 16px;
-  font-weight: 700;
-  background: #f9fafb;
-}
-
-/* =======================
-   PLAN CARD (GRID DEFAULT)
-======================= */
-
-.plan {
-  position: relative;
-  height: 200px;
-  padding: 16px;
-  border-radius: 14px;
-  box-shadow: 2px 2px 4px rgb(151, 151, 151);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: rgb(202, 230, 165);
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-.plan:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-}
-
-/* =======================
-   LIST MODE OVERRIDE (NEW)
-======================= */
-
-.plan.list {
-  height: auto;
-  border-radius: 10px;
-  border: 1px solid rgb(214, 214, 214);
-  box-shadow: none;
-  background-color: rgb(165, 230, 221);
-  display: grid;
-  grid-template-columns: 2fr 1fr 4fr 2fr;
-  align-items: center;
-  padding: 4px 8px;
-  transition: 0.6s;
-}
-
-.plan.list:hover {
-  transform: none;
-  background: #cbcbcb;
-  transition: 0.6s;
-}
-
-/* =======================
-   LIST COLUMNS
-======================= */
-
-.plan.list .col {
-  font-size: 30px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 10px;
-}
-
-.title {
-  font-size: 30px;
-  flex-wrap: wrap;
-  max-width: 100%;
-}
-
-.plan.list .col.tag {
-  font-weight: 500;
-  font-size: 17px;
-  color: rgb(5, 179, 164);
-}
-
-.plan.list .col.desc {
-  color: #374151;
-  margin: auto 0px;
-  font-size: 20px;
-}
-
-.change {
-  color: rgb(5, 179, 164);
-  font-weight: 500;
-  font-size: 17px;
-}
-
-/* =======================
-   GRID CONTENT
-======================= */
-
-.plan h4 {
-  margin: 0 0 6px 0;
-}
-
-.plan .date {
-  font-size: 12px;
-  color: #6b7280;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.plan .desc {
-  font-size: 13px;
-  margin-top: 6px;
-  color: #374151;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* =======================
-   ACTION BUTTONS
-======================= */
-
-.actions {
-  display: flex;
-  gap: 8px;
-}
-
-.actions button {
-  padding: 6px 10px;
-  font-size: 13px;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
-  transition: transform 160ms ease;
-}
-
-.actions button:hover {
-  transform: translateY(-2px);
-}
-
-.actions .edit {
-  background: linear-gradient(90deg, #10b981, #06b6d4);
-  color: white;
-  padding: 10px 20px;
-}
-
-.actions .delete {
-  background: #ff6b6b;
-  color: white;
-  padding: 10px 20px;
-}
-
-/* =======================
-   PLAN TAG (TOP RIGHT)
-======================= */
-
-.plan-tag {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: linear-gradient(90deg, #46e588, #06b6d4);
-  color: #042337;
-  padding: 4px 8px;
-  border-radius: 30px 0px 0px 30px;
-  box-shadow: 4px 4px 10px rgb(15, 23, 42);
-  font-size: 12px;
-}
-
-/* =======================
-   TAG INPUT SUGGESTIONS
-======================= */
-
-.tag-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.tag-chip {
-  padding: 4px 10px;
-  margin-top: 6px;
-  border-radius: 12px;
-  background: #eee;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.tag-chip:hover {
-  background: #ddd;
-}
-
-/* =======================
-   RESPONSIVE
-======================= */
-
-@media (max-width: 640px) {
-  .app {
-    padding: 24px;
-  }
-
-  .plans.grid {
-    grid-template-columns: 1fr;
-  }
-
-  .list-header,
-  .plan.list {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-}
-
-.sort-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.sort-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  width: fit-content;
-  color: white;
-  cursor: pointer;
-  font-size: 17px;
-  border-radius: 10px;
-  font-weight: 600;
-  border: none;
-  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.12);
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
-}
-
-.sort-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 280px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  display: none;
-  z-index: 100;
-  overflow: hidden;
-}
-
-.sort-menu div {
-  padding: 10px 14px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.sort-menu div:hover {
-  background: #919191;
-}
-
-/* 🔥 THIS IS THE IMPORTANT PART */
-.sort-dropdown:hover .sort-menu {
-  display: block;
-}
-
-/* =======================
-   FILTER TAG LABEL
-======================= */
-
-.selected-tag {
-  margin-left: 8px;
-  padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+.avatar-placeholder {
+  font-size: 32px;
+  color: #9ca3af;
+  font-weight: bold;
 }

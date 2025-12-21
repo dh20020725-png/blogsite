@@ -3,9 +3,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
-import todoRoutes from "./routes/todos.js";
-import tagRoutes from "./routes/tags.js";
-import authRoutes from "./routes/auth.js";
 
 const app = express();
 
@@ -19,10 +16,6 @@ async function startServer() {
   try {
     await mongoose.connect(MONGO_URI);
     console.log(" MongoDB connected");
-
-    app.use("/api/todos", todoRoutes);
-    app.use("/api/tags", tagRoutes);
-    app.use("/api/auth", authRoutes);
 
     app.listen(4000, () => {
       console.log(" Server running on http://localhost:4000");

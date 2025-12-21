@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "seed": "tsx src/seeder.ts"
   },
   "keywords": [],
   "author": "",
